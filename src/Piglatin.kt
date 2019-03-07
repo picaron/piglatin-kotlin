@@ -1,9 +1,4 @@
 
-import ConsoleColors.BRIGHT_GREEN
-import ConsoleColors.BRIGHT_RED
-import ConsoleColors.BRIGHT_WHITE
-import ConsoleColors.BRIGHT_YELLOW
-import ConsoleColors.COLOR_RESET
 import kotlin.test.assertEquals
 
 val pigLatinTranslator = PigLatinTranslator()
@@ -43,10 +38,10 @@ fun test(input: String, expectedOutput: String) {
     val actualOutput = pigLatinTranslator.translate(input)
     try {
         assertEquals(expectedOutput, actualOutput)
-        println("✅ translate($BRIGHT_WHITE$input$COLOR_RESET) returned $BRIGHT_GREEN$actualOutput$COLOR_RESET as expected")
+        println("✅ translate(${white(input)}) returned ${green(actualOutput)} as expected")
         suiteReport.recordSuccessful()
     } catch (e: Throwable) {
-        println("❌ translate($BRIGHT_WHITE$input$COLOR_RESET) returned $BRIGHT_RED$actualOutput$COLOR_RESET but expected output was: $BRIGHT_YELLOW$expectedOutput$COLOR_RESET")
+        println("❌ translate(${white(input)}) returned ${red(actualOutput)} but expected output was: ${yellow(expectedOutput)}")
         suiteReport.recordFailed()
     }
 }

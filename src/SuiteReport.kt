@@ -1,9 +1,3 @@
-
-import ConsoleColors.BRIGHT_GREEN
-import ConsoleColors.BRIGHT_RED
-import ConsoleColors.BRIGHT_WHITE
-import ConsoleColors.COLOR_RESET
-
 class SuiteReport {
     private var successfulTestCount = 0
     private var failedTestCount = 0
@@ -19,9 +13,9 @@ class SuiteReport {
         totalTestCount++
     }
 
-    private fun resultType() = if (totalTestCount == successfulTestCount) "${BRIGHT_GREEN}SUCCESS$COLOR_RESET" else "${BRIGHT_RED}FAILURE$COLOR_RESET"
+    private fun resultType() = if (totalTestCount == successfulTestCount) green("SUCCESS") else red("FAILURE")
 
     fun printReport() {
-        println("\nResults: ${resultType()} ($BRIGHT_WHITE$totalTestCount$COLOR_RESET tests, $BRIGHT_GREEN$successfulTestCount$COLOR_RESET successes, $BRIGHT_RED$failedTestCount$COLOR_RESET failures)")
+        println("\nResults: ${resultType()} (${white(totalTestCount)} tests, ${green(successfulTestCount)} successes, ${red(failedTestCount)} failures)")
     }
 }
